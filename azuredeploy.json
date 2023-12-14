@@ -18,17 +18,38 @@
             "armtemplate":  "Generated from https://github.com/Azure/Azure-Sentinel/tree/master/Tools/Playbook-ARM-Template-Generator"
         },
         "author":  {
-            "name":  ""
+            "name":  "Sharjeel Khan"
         }
     },
-    "parameters":  {
-        "PlaybookName":  {
-            "defaultValue":  "AutomatedEmail",
-            "type":  "string"
+    "parameters": {
+        "PlaybookName": {
+            "defaultValue": "new-inc-notification",
+            "type": "String"
+        },
+        "DeployersUserName": {
+            "defaultValue": "<username>@<domain>",
+            "type": "string"
+        },
+        "MailList": {
+            "defaultValue": "<user1>@<domain>;<user2>@<domain>;...",
+            "type": "String"
+        },
+        "SentinelWSResourceGroup": {
+            "defaultValue": "az-sentinel-rg",
+            "type": "String"
+        },
+        "SentinelWSName": {
+            "defaultValue": "az-sentinel-ws-name",
+            "type": "String"
+        },
+        "SentinelSubID": {
+            "defaultValue": "00000000-0000-0000-0000-000000000000",
+            "type": "String"
         }
     },
     "variables":  {
         "MicrosoftSentinelConnectionName":  "[concat('MicrosoftSentinel-', parameters('PlaybookName'))]",
+        "azuremonitorlogsConnectionName": "[concat('azuremon-', parameters('PlaybookName'))]",
         "Office365ConnectionName":  "[concat('Office365-', parameters('PlaybookName'))]"
     },
     "resources":  [
